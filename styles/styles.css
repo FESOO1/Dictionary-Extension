@@ -23,7 +23,6 @@ main {
     padding: 10px;
     display: grid;
     grid-template-rows: auto 1fr;
-    row-gap: 10px;
     overflow-y: scroll;
 }
 
@@ -184,6 +183,7 @@ main::before {
 
 .main-output-meaning-itself {
     font-weight: 600;
+    line-height: 1.5;
 }
 
 .main-output-meaning-examples {
