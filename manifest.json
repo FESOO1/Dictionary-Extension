@@ -1,6 +1,6 @@
 {
     "name": "Cambridge Dictionary",
-    "description": "A free dictionary that uses Cambridge Dictionary's API",
+    "description": "A reliable dictionary app that uses Cambridge Dictionary's API.",
     "version": "1.0",
     "manifest_version": 3,
     "action": {

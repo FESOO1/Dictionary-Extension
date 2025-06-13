@@ -40,10 +40,6 @@ main {
     overflow-y: auto;
 }
 
-main::-webkit-scrollbar {
-    
-}
-
 /* 
 
     MAIN INPUT
