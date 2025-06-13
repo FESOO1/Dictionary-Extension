@@ -1,13 +1,14 @@
 const searchButton = document.querySelector('#searchButton');
 const searchInput = document.querySelector('#searchInput');
 const outputContainer = document.querySelector('.main-output');
-const api = 'https://dictionary-api.eliaschen.dev/api/dictionary/en/bring';
+let input;
 
 // GET THE WORD DATA
 
 async function getTheWordData(e) {
+    e.preventDefault();
     try {
-        const response = await fetch(`https://dictionary-api.eliaschen.dev/api/dictionary/en/something`);
+        const response = await fetch(`https://dictionary-api.eliaschen.dev/api/dictionary/en/${input}`);
 
         if (!response.ok) {
             throw new Error(response.status);
@@ -21,8 +22,6 @@ async function getTheWordData(e) {
         console.error(Number(e.message) === 404 ? true : false);
     };
 };
-
-getTheWordData();
 
 // DISPLAY THE DATA
 
@@ -115,3 +114,7 @@ function displayTheData(data) {
         outputContainer.appendChild(outputMeanings);
     };
 };
+
+// INITIALIZE BUTTONS
+searchButton.addEventListener('click', getTheWordData);
+searchInput.addEventListener('input', e => input = e.target.value.toLowerCase());
