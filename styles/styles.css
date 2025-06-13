@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: rgb(240,240,240);
+    display: flex;
+    justify-content: center;
+}
+
+/* MAIN */
+
+main {
+    width: 330px;
+    height: 500px;
+    border: 1px solid black;
+    position: relative;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 10px;
+    overflow-y: scroll;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../assets/bg.svg);
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* 
+
+    MAIN INPUT
+
+*/
+
+.main-input {
+    height: 45px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background-color: white;
+    border-radius: 0.3rem;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+/* MAIN INPUT ITSELF */
+
+.main-input-itself {
+    width: 100%;
+    padding-left: 13px;
+    font-size: 1rem;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+/* MAIN INPUT BUTTON */
+
+.main-input-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 12px;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.main-input-button-svg {
+    color: gray;
+    width: 22px;
+    height: 22px;
+}
+
+/* 
+
+    MAIN OUTPUT
+
+*/
+
+.main-output {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px;
+}
+
+/* MAIN OUTPUT WORD */
+
+.main-output-word {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.main-output-word-itself {
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+/* MAIN OUTPUT WORD PRONUNCIATION */
+
+.main-output-word-pronunciation {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.main-output-word-pronunciation-text {
+    font-weight: 300;
+}
+
+.main-output-word-pronunciation-button {
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+    column-gap: 3px;
+    background-color: white;
+    border-radius: 0.2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.main-output-word-pronunciation-button-text {
+    font-weight: 500;
+}
+
+.main-output-word-pronunciation-button-svg {
+    width: 15px;
+    height: 15px;
+    color: black;
+}
+
+.main-output-word-pronunciation-button:hover {
+    background-color: rgb(240,240,240);
+}
+
+.main-output-word-pronunciation-button:active {
+    background-color: rgb(230,230,230);
+}
+
+/* MAIN OUTPUT MEANINGS */
+
+.main-output-meanings {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+/* MAIN OUTPUT MEANING */
+
+.main-output-meaning {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    border-top: 2px solid #5d2fc1;
+}
+
+.main-output-meaning-text {
+    margin-top: 10px;
+    font-weight: 400;
+    font-style: italic;
+    color: #5d2fc1;
+}
+
+.main-output-meaning-itself {
+    font-weight: 600;
+}
+
+.main-output-meaning-examples {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding-left: 20px;
+}
+
+.main-output-meaning-example {
+    font-style: italic;
+    line-height: 1.5;
+}

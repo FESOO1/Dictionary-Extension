@@ -1,0 +1,10 @@
+{
+    "name": "Cambridge Dictionary",
+    "description": "A free dictionary that uses Cambridge Dictionary's API",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "./index.html",
+        "default_icon": "./assets/icon.png"
+    }
+}
