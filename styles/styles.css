@@ -47,7 +47,7 @@ main {
 */
 
 .main-input {
-    height: 45px;
+    height: 40px;
     display: grid;
     grid-template-columns: 1fr auto;
     background-color: white;
@@ -82,8 +82,8 @@ main {
 
 .main-input-button-svg {
     color: gray;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
 }
 
 /* 
