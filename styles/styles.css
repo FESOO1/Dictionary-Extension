@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: rgb(240,240,240);
+    background-color: rgb(245, 245, 245);
     display: flex;
     justify-content: center;
     position: relative;
@@ -52,7 +52,7 @@ main {
     grid-template-columns: 1fr auto;
     background-color: white;
     border-radius: 0.3rem;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
 
@@ -84,6 +84,30 @@ main {
     color: gray;
     width: 18px;
     height: 18px;
+}
+
+.main-input-button-svg-loader {
+    display: none;
+    color: gray;
+    width: 18px;
+    height: 18px;
+    animation: 2s linear infinite search-button-svg-animation;
+}
+
+@keyframes search-button-svg-animation {
+    to{transform: rotateZ(360deg);}
+}
+
+.main-input-button:disabled {
+    pointer-events: none;
+}
+
+.main-input-button:disabled .main-input-button-svg {
+    display: none;
+}
+
+.main-input-button:disabled .main-input-button-svg-loader {
+    display: unset;
 }
 
 /* 
@@ -126,8 +150,13 @@ main {
 }
 
 @keyframes loading-dots-animation {
-    50%{opacity: 0;}
-    100%{opacity: 1;}
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 /* MAIN OUTPUT ERROR */
@@ -185,7 +214,7 @@ main {
     background-color: white;
     border-radius: 1rem;
     cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .main-output-word-pronunciation-button-text {
@@ -199,11 +228,11 @@ main {
 }
 
 .main-output-word-pronunciation-button:hover {
-    background-color: rgb(240,240,240);
+    background-color: rgb(240, 240, 240);
 }
 
 .main-output-word-pronunciation-button:active {
-    background-color: rgb(230,230,230);
+    background-color: rgb(230, 230, 230);
 }
 
 /* MAIN OUTPUT WORD FORMS */

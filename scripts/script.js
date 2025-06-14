@@ -8,8 +8,10 @@ let input;
 
 async function getTheWordData(e) {
     e.preventDefault();
+    // HANDLING THE LOADING
+    outputContainer.innerHTML = `<h3 class="main-output-loading-text">Loading<span>.</span><span>.</span><span>.</span></h3>`;
+    searchButton.disabled = true;
     try {
-        outputContainer.innerHTML = `<h3 class="main-output-loading-text">Loading<span>.</span><span>.</span><span>.</span></h3>`;
         const response = await fetch(`https://dictionary-api.eliaschen.dev/api/dictionary/en/${input}`);
 
         if (!response.ok) {
@@ -31,6 +33,7 @@ async function getTheWordData(e) {
 // DISPLAY THE DATA
 
 function displayTheData(data) {
+    searchButton.disabled = false;
     // EMPTYING THE OUTPUT CONTAINER
     outputContainer.innerHTML = '';
 
