@@ -100,6 +100,36 @@ main {
     padding: 10px;
 }
 
+/* MAIN OUTPUT LOADING TEXT */
+
+.main-output-loading-text {
+    text-align: center;
+    padding: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(48, 36, 31);
+    text-transform: uppercase;
+}
+
+.main-output-loading-text span {
+    color: rgb(48, 36, 31);
+    animation: 300ms infinite loading-dots-animation;
+    animation-delay: 50ms;
+}
+
+.main-output-loading-text span:nth-of-type(2) {
+    animation-delay: 100ms;
+}
+
+.main-output-loading-text span:last-of-type {
+    animation-delay: 150ms;
+}
+
+@keyframes loading-dots-animation {
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
 /* MAIN OUTPUT ERROR */
 
 .main-output-error {

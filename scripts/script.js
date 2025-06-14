@@ -1,14 +1,20 @@
 const searchButton = document.querySelector('#searchButton');
 const searchInput = document.querySelector('#searchInput');
 const outputContainer = document.querySelector('.main-output');
-let input;
 searchInput.focus();
+let input;
+let interval;
+let counter = 0;
 
 // GET THE WORD DATA
 
 async function getTheWordData(e) {
     e.preventDefault();
     try {
+        interval = setInterval(() => {
+            outputContainer.innerHTML = `<h3 class="main-output-loading-text">Loading<span>.</span><span>.</span><span>.</span></h3>`;
+            counter++;
+        }, 1);
         const response = await fetch(`https://dictionary-api.eliaschen.dev/api/dictionary/en/${input}`);
 
         if (!response.ok) {
@@ -21,6 +27,8 @@ async function getTheWordData(e) {
     } catch (e) {
         if (e.message === '404') {
             displayTheData();
+        } else {
+            document.location.reload();
         };
     };
 };
@@ -28,6 +36,9 @@ async function getTheWordData(e) {
 // DISPLAY THE DATA
 
 function displayTheData(data) {
+    // CLEAR THE INTERVAL
+    clearInterval(interval);
+
     // EMPTYING THE OUTPUT CONTAINER
     outputContainer.innerHTML = '';
 
