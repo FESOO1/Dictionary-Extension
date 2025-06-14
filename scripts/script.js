@@ -2,6 +2,7 @@ const searchButton = document.querySelector('#searchButton');
 const searchInput = document.querySelector('#searchInput');
 const outputContainer = document.querySelector('.main-output');
 let input;
+searchInput.focus();
 
 // GET THE WORD DATA
 
@@ -18,8 +19,9 @@ async function getTheWordData(e) {
         // DISPLAY THE DATA
         displayTheData(data);
     } catch (e) {
-        console.error(e.name);
-        console.error(Number(e.message) === 404 ? true : false);
+        if (e.message === '404') {
+            displayTheData();
+        };
     };
 };
 
@@ -73,9 +75,59 @@ function displayTheData(data) {
                 audio.play();
             });
         };
+        const outputWordForms = document.createElement('div');
+        outputWordForms.classList.add('main-output-word-forms');
+
+        if (data.pos[0] === 'verb') {
+            /* let forms = [data.verbs[data.verbs.length - 1].text]; */
+            let forms = [];
+
+            for (const verbForm of data.verbs) {
+                // PAST TENSE
+                if (verbForm.type.includes('Past participle')) {
+                    forms[1] = verbForm.type.split('Past participle')[0];
+                    continue;
+                } else if (verbForm.text.includes('Past participle')) {
+                    forms[1] = verbForm.text.split('Past participle')[0];
+                    continue;
+                };
+
+                // PAST PARTICIPLE
+                if (verbForm.type.includes('Present participle')) {
+                    forms[2] = verbForm.type.split('Present participle')[0];
+                    continue;
+                } else if (verbForm.text.includes('Present participle')) {
+                    forms[2] = verbForm.text.split('Present participle')[0];
+                    continue;
+                };
+            };
+
+            /* const outputWordFormPresentParticle = document.createElement('h4');
+            outputWordFormPresentParticle.classList.add('main-output-word-forms-text');
+            outputWordFormPresentParticle.innerHTML = `present participle <span>${forms[0]}</span>`;
+            const outputWordFormsDividerOne = document.createElement('hr');
+            outputWordFormsDividerOne.classList.add('main-output-word-forms-divider'); */
+            const outputWordFormPastTense = document.createElement('h4');
+            outputWordFormPastTense.classList.add('main-output-word-forms-text');
+            outputWordFormPastTense.innerHTML = `past tense <span>${forms[1]}</span>`;
+            const outputWordFormsDividerTwo = document.createElement('hr');
+            outputWordFormsDividerTwo.classList.add('main-output-word-forms-divider');
+            const outputWordFormPastParticle = document.createElement('h4');
+            outputWordFormPastParticle.classList.add('main-output-word-forms-text');
+            outputWordFormPastParticle.innerHTML = `past participle <span>${forms[2]}</span>`;
+
+            /* outputWordForms.appendChild(outputWordFormPresentParticle);
+            outputWordForms.appendChild(outputWordFormsDividerOne); */
+            outputWordForms.appendChild(outputWordFormPastTense);
+            outputWordForms.appendChild(outputWordFormsDividerTwo);
+            outputWordForms.appendChild(outputWordFormPastParticle);
+        };
+
+        console.log(data);
 
         outputWord.appendChild(outputWordItself);
         outputWord.appendChild(outputWordPronunciation);
+        outputWord.appendChild(outputWordForms);
 
         // OUTPUT MEANINGS
         const outputMeanings = document.createElement('div');
@@ -112,6 +164,20 @@ function displayTheData(data) {
         // APPEND
         outputContainer.appendChild(outputWord);
         outputContainer.appendChild(outputMeanings);
+    } else {
+        const outputError = document.createElement('div');
+        outputError.classList.add('main-output-error');
+        const outputErrorHeader = document.createElement('h1');
+        outputErrorHeader.classList.add('main-output-error-header');
+        outputErrorHeader.textContent = '404';
+        const outputErrorPar = document.createElement('p');
+        outputErrorPar.classList.add('main-output-error-paragraph');
+        outputErrorPar.textContent = 'We couldn\'t find what you were looking for...';
+        outputError.appendChild(outputErrorHeader);
+        outputError.appendChild(outputErrorPar);
+
+        outputContainer.appendChild(outputError);
+        searchInput.value = '';
     };
 };
 
