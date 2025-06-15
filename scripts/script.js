@@ -6,8 +6,7 @@ let input;
 
 // GET THE WORD DATA
 
-async function getTheWordData(e) {
-    e.preventDefault();
+async function getTheWordData() {
     // HANDLING THE LOADING
     outputContainer.innerHTML = `<h3 class="main-output-loading-text">Loading<span>.</span><span>.</span><span>.</span></h3>`;
     searchButton.disabled = true;
@@ -33,6 +32,7 @@ async function getTheWordData(e) {
 // DISPLAY THE DATA
 
 function displayTheData(data) {
+    searchInput.value = '';
     searchButton.disabled = false;
     // EMPTYING THE OUTPUT CONTAINER
     outputContainer.innerHTML = '';
@@ -187,6 +187,20 @@ function displayTheData(data) {
     };
 };
 
+// HANDLE SEARCH
+
+function handleSearch(e) {
+    e.preventDefault();
+    if (searchInput.value.length > 0) {
+        getTheWordData();
+        if (searchInput.parentElement.classList.contains('main-input-error')) {
+            searchInput.parentElement.classList.remove('main-input-error');
+        };
+    } else {
+        searchInput.parentElement.classList.add('main-input-error');
+    };
+};
+
 // INITIALIZE BUTTONS
-searchButton.addEventListener('click', getTheWordData);
+searchButton.addEventListener('click', handleSearch);
 searchInput.addEventListener('input', e => input = e.target.value.toLowerCase());
