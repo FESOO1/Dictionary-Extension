@@ -47,6 +47,8 @@ main {
 */
 
 .main-input {
+    position: sticky;
+    top: 0;
     height: 40px;
     display: grid;
     grid-template-columns: 1fr auto;
